@@ -1,0 +1,198 @@
+SQL UPDATE
+The SQL commands (UPDATE and DELETE) are used to modify the data that is already in the database. The SQL DELETE command uses a WHERE clause.
+
+SQL UPDATE statement is used to change the data of the records held by tables. Which rows is to be update, it is decided by a condition. To specify condition, we use WHERE clause.
+
+The UPDATE statement can be written in following form:
+
+UPDATE table_name SET [column_name1= value1,... column_nameN = valueN] [WHERE condition]  
+
+UPDATE table_name  
+SET column_name = expression  
+WHERE conditions  
+
+SQL statement:
+
+UPDATE students  
+SET User_Name = 'beinghuman'  
+WHERE Student_Id = '3' 
+
+Source Table:
+
+Student_Id	FirstName	LastName	User_Name
+1	              Ada	   Sharma	   sharmili
+2	             Rahul	 Maurya	   sofamous
+3	             James	 Walker	    jonny
+
+Student_Id	FirstName	LastName	User_Name
+1	            Ada	     Sharma	  sharmili
+2	           Rahul	   Maurya	   sofamous
+3	           James	   Walker    beinghuman
+
+SQL JOIN
+As the name shows, JOIN means to combine something. In case of SQL, JOIN means "to combine two or more tables".
+
+In SQL, JOIN clause is used to combine the records from two or more tables in a database.
+
+Types of SQL JOIN
++INNER JOIN
++LEFT JOIN
++RIGHT JOIN
++FULL JOIN
+
+INNER Join or EQUI Join
+This is a simple JOIN in which the result is based on matched data as per the equality condition specified in the SQL query.
+
+SELECT column-name-list FROM 
+table-name1 INNER JOIN table-name2 
+WHERE table-name1.column-name = table-name2.column-name;
+
+Example of INNER JOIN
+
+ID	NAME
+1	abhi
+2	adam
+3	alex
+4	anu
+
+and the class_info table,
+
+ID	Address
+1	DELHI
+2	MUMBAI
+3	CHENNAI
+Inner JOIN query will be,
+
+SELECT * from class INNER JOIN class_info where class.id = class_info.id;
+
+The resultset table will look like,
+
+ID	NAME	ID	Address
+1	abhi	1	DELHI
+2	adam	2	MUMBAI
+3	alex	3	CHENNAI
+
+LEFT Outer Join
+The left outer join returns a resultset table with the matched data from the two tables and then the remaining rows of the left table and null from the right table's columns.
+
+Syntax for Left Outer Join is,
+
+SELECT column-name-list FROM 
+table-name1 LEFT OUTER JOIN table-name2
+ON table-name1.column-name = table-name2.column-name;
+
+To specify a condition, we use the ON keyword with Outer Join.
+
+Left outer Join Syntax for Oracle is,
+
+SELECT column-name-list FROM 
+table-name1, table-name2 on table-name1.column-name = table-name2.
+
+Example of Left Outer Join
+Here is the class table,
+
+ID	NAME
+1	abhi
+2	adam
+3	alex
+4	anu
+5	ashish
+and the class_info table,
+
+ID	Address
+1	DELHI
+2	MUMBAI
+3	CHENNAI
+7	NOIDA
+8	PANIPAT
+SELECT * FROM class LEFT OUTER JOIN class_info ON (class.id = class_info.id);
+The resultset table will look like,
+
+ID	NAME	ID	Address
+1	abhi	1	DELHI
+2	adam	2	MUMBAI
+3	alex	3	CHENNAI
+4	anu	null	null
+5	ashish	null	null
+
+RIGHT Outer Join
+The right outer join returns a resultset table with the matched data from the two tables being joined, then the remaining rows of the right table and null for the remaining left table's columns.
+
+Syntax for Right Outer Join is,
+
+SELECT column-name-list FROM 
+table-name1 RIGHT OUTER JOIN table-name2 
+ON table-name1.column-name = table-name2.column-name;
+
+Right outer Join Syntax for Oracle is,
+
+SELECT column-name-list FROM 
+table-name1, table-name2 
+ON table-name1.column-name(+) = table-name2.column-name;
+
+Example of Right Outer Join
+Once again the class table,
+
+ID	NAME
+1	abhi
+2	adam
+3	alex
+4	anu
+5	ashish
+and the class_info table,
+
+ID	Address
+1	DELHI
+2	MUMBAI
+3	CHENNAI
+7	NOIDA
+8	PANIPAT
+
+SELECT * FROM class RIGHT OUTER JOIN class_info ON (class.id = class_info.id);
+The resultant table will look like,
+
+ID	NAME	ID	Address
+1	abhi	1	DELHI
+2	adam	2	MUMBAI
+3	alex	3	CHENNAI
+null	null	7	NOIDA
+null	null	8	PANIPAT
+
+Full Outer Join
+The full outer join returns a resultset table with the matched data of two table then remaining rows of both left table and then the right table.
+
+Syntax of Full Outer Join is,
+
+SELECT column-name-list FROM 
+table-name1 FULL OUTER JOIN table-name2
+ON table-name1.column-name = table-name2.column-name;
+Example of Full outer join is,
+
+ID	NAME
+1	abhi
+2	adam
+3	alex
+4	anu
+5	ashish
+
+and the class_info table,
+
+ID	Address
+1	DELHI
+2	MUMBAI
+3	CHENNAI
+7	NOIDA
+8	PANIPAT
+Full Outer Join query will be like,
+SELECT * FROM class FULL OUTER JOIN class_info ON (class.id = class_info.id);
+
+The resultset table will look like,
+
+ID	NAME	ID	Address
+1	abhi	1	DELHI
+2	adam	2	MUMBAI
+3	alex	3	CHENNAI
+4	anu	null	null
+5	ashish	null	null
+null	null	7	NOIDA
+null	null	8	PANIPAT
